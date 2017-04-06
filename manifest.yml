@@ -1,6 +1,6 @@
 applications:
 - name: LibraryUI
-  host: LibraryUI-[myName]
+  host: LibraryUI-demo-1
   env:
     LIBRARY_URI: "https://libraryserver-[myName].eu-gb.mybluemix.net/api"
   memory: 64M
