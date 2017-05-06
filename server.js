@@ -70,6 +70,8 @@ app.use(passport.session());
 	//redirectUri: "{app-url}" + CALLBACK_URL
 }));*/
 //---------------------------------------------------------------------------//
+passport.use(new WebAppStrategy());
+
 
 // Configure passportjs with user serialization/deserialization. This is required
 // for authenticated session persistence across HTTP requests. See passportjs docs
