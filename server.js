@@ -52,7 +52,7 @@ app.use(session({
 app.set('view engine', 'ejs');
 
 // Use static resources from /public directory
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
 
 // Configure express application to use passportjs
 app.use(passport.initialize());
@@ -105,7 +105,7 @@ app.get(LOGOUT_URL, function(req, res){
 
 //Generat the main html page
 app.get('/',function(req,res){
-	res.sendfile(__dirname + '/public/intro.html');
+	res.sendfile(__dirname + '/views/intro.html');
 });
 
 // Protected area. If current user is not authenticated - redirect to the login widget will be returned.
