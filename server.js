@@ -2,7 +2,7 @@ var express = require('express');
 //new
 var session = require('express-session');
 var log4js = require('log4js');
-var passport ? require('passport');
+var passport = require('passport');
 var WebAppStrategy = require('bluemix-appid').WebAppStrategy;
 
 var cors = require('cors');
