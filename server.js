@@ -1,14 +1,29 @@
 var express = require('express');
+//new
+var session = require('express-session');
+var log4js = require('log4js');
+var passport ? require('passport');
+var WebAppStrategy = require('bluemix-appid').WebAppStrategy;
+
 var cors = require('cors');
 var app = express();
+//new
+const logger = log4js.getLogger("testApp");
+
 var request = require('request');
 var watson = require('watson-developer-cloud');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
-
-
-
 app.use(cors());
+//new
+app.use(passport.initialize());
+
+// Below URLs will be used for App ID OAuth flows
+const LANDING_PAGE_URL = "/web-app-sample.html";
+const LOGIN_URL = "/ibm/bluemix/appid/login";
+const CALLBACK_URL = "/ibm/bluemix/appid/callback";
+const LOGOUT_URL = "/ibm/bluemix/appid/logout";
+
 
 
 var vcapServices;
@@ -23,11 +38,95 @@ else {
 }
 //console.log(vcapServices);
 
+
+// Setup express application to use express-session middleware
+// Must be configured with proper session storage for production
+// environments. See https://github.com/expressjs/session for
+// additional documentation
+app.use(session({
+	secret: '123456',
+	resave: true,
+	saveUninitialized: true
+}));
+
+app.set('view engine', 'ejs');
+
+// Use static resources from /public directory
+app.use(express.static(__dirname + '/public'));
+
+// Configure express application to use passportjs
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+//var appidCreds = vcapServices.AdvancedMobileAccess[0].credentials;
+//---------------------------------------------------------------------------//
+/*passport.use(new WebAppStrategy({
+	tenantId: appidCreds.tenantId,
+	clientId: appidCreds.clientId,
+	secret: appidCreds.secret,
+	oauthServerUrl: appidCreds.oauthServerUrl,
+	//redirectUri: "{app-url}" + CALLBACK_URL
+}));*/
+//---------------------------------------------------------------------------//
+
+// Configure passportjs with user serialization/deserialization. This is required
+// for authenticated session persistence across HTTP requests. See passportjs docs
+// for additional information http://passportjs.org/docs
+passport.serializeUser(function(user, cb) {
+	cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+	cb(null, obj);
+});
+
+// Explicit login endpoint. Will always redirect browser to login widget due to {forceLogin: true}. If forceLogin is set to false the redirect to login widget will not occur if user is already authenticated
+app.get(LOGIN_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME, {
+	//successRedirect: LANDING_PAGE_URL,
+	forceLogin: true
+}));
+
+// Callback to finish the authorization process. Will retrieve access and identity tokens/
+// from App ID service and redirect to either (in below order)
+// 1. the original URL of the request that triggered authentication, as persisted in HTTP session under WebAppStrategy.ORIGINAL_URL key.
+// 2. successRedirect as specified in passport.authenticate(name, {successRedirect: "...."}) invocation
+// 3. application root ("/")
+app.get(CALLBACK_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME));
+
+// Logout endpoint. Clears authentication information from session
+app.get(LOGOUT_URL, function(req, res){
+	WebAppStrategy.logout(req);
+	res.redirect(LANDING_PAGE_URL);
+});
+
+//Generat the main html page
+app.get('/',function(req,res){
+	res.sendfile(__dirname + '/public/intro.html');
+});
+
+// Protected area. If current user is not authenticated - redirect to the login widget will be returned.
+// In case user is authenticated - a page with current user information will be returned.
+app.get("/protected", passport.authenticate(WebAppStrategy.STRATEGY_NAME), function(req, res){
+
+	//return the protected page with user info
+	res.render('protected',{name: req.user.name || "guest "});
+});
+
+
+
+
+app.listen(process.env.PORT || 3000);
+
+
+
+
+
+
 var libraryURI = (process.env.LIBRARY_URI || 'http://localhost:9080/library-server-java/api');
 console.log("The Library URI is: " + libraryURI);
-// New call to compress content
-app.use(express.static(__dirname + '/public'));
-app.listen(process.env.PORT || 3000);
+
 
 //java server
 app.get('/apiuri', function(req, res) {
