@@ -8,7 +8,7 @@ var WebAppStrategy = require('bluemix-appid').WebAppStrategy;
 var cors = require('cors');
 var app = express();
 //new
-const logger = log4js.getLogger("testApp");
+//const logger = log4js.getLogger("testApp");
 
 var request = require('request');
 var watson = require('watson-developer-cloud');
