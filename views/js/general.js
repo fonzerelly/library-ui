@@ -4,6 +4,13 @@ var myurl = window.location.host;
 var protocol = window.location.protocol;
 myurlapi = protocol + '//' + myurl + "/apiuri";
 console.log('The rootURLapi is found at: '+myurlapi);
+var rootURLspeechNode = protocol + '//' + myurl + "/gettoken";
+console.log('url tts token: '+rootURLspeechNode);
+var rootURLstartConv = protocol + '//' + myurl + "/startConv";
+var rootURLconChat = protocol + '//' + myurl + "/say";
+console.log('url conv start: '+rootURLstartConv);
+
+if(!(myurlapi== null || rootURLspeechNode==null || rootURLstartConv==null || rootURLconChat==null )){
   $.ajax({
     type: 'GET',
     url: myurlapi,
@@ -17,11 +24,7 @@ console.log('The rootURLapi is found at: '+myurlapi);
       executeConversation();
     }
   });
-var rootURLspeechNode = protocol + '//' + myurl + "/gettoken";
-console.log('url tts token: '+rootURLspeechNode);
-var rootURLstartConv = protocol + '//' + myurl + "/startConv";
-var rootURLconChat = protocol + '//' + myurl + "/say";
-console.log('url conv start: '+rootURLstartConv);
+}
 
 
 }
