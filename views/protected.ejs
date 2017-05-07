@@ -91,6 +91,8 @@
               <div class="media-body">
                 <h1 class="media-heading">Hello <%= name %></h1>
                 <p>Your email address is <%= email %>.</p>
+                <p>To logout, click <button type="button" class="btn btn-default" data-toggle="modal" data-target="#logoutModal" id="logout-btn">here</button></p>
+
               </div>
               <div class="media-right">
                 <img src="images/anonymous.svg" class="media-object" style="width:60px">
@@ -99,7 +101,30 @@
           </div>
           <img id="userProfileImg" class="user-profile" src="images/anonymous.svg">
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="logoutModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Logout? <a href="/logout">
+                  <button type="button" class="btn btn-default">
+                  <span class="glyphicon glyphicon-ok"></span></button>
+                  </a></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
       </div>
+
 
       <div class="tab-pane fade" id="bookdiv">
 

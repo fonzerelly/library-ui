@@ -31,6 +31,11 @@ body {
   color: #3E1300;
   border: none;
 }
+.modal {
+  background-color: #F1F3D6;
+  border-color: #F1F3D6;
+  overflow: auto;
+}
 .panel {
   border-color: #A7652E;
 }
