@@ -5,7 +5,6 @@ var rootURLbooks = rootURL1 + "/books";
 console.log(rootURLbooks);
 var rootURLspeech = rootURL1 + '/text_to_speech';
 console.log(rootURLspeech);
-var rootURLspeechNode = protocol + '//' + myurl + "/gettoken";
 var token;
 
 
@@ -23,16 +22,18 @@ var token;
 });*/
 
 //get token
-$.ajax({
-	url: rootURLspeechNode,
-	type: 'GET',
-	success: function(data){
-		token = data;
-		//console.log("token: "+token);
-	},
-	error: function(jqXHR, textStatus, errorThrown){
-		alert('audio error Nodejs: '+ textStatus);
-	}
+$(document).ready(function() {
+	$.ajax({
+		url: rootURLspeechNode,
+		type: 'GET',
+		success: function(data){
+			token = data;
+			//console.log("token: "+token);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('audio error Nodejs: '+ textStatus);
+		}
+	});
 });
 
 $(document).ready(function() {
