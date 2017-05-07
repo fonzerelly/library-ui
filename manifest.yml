@@ -3,5 +3,5 @@ applications:
   host: LibraryUI-demo-1
   env:
     LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
-  memory: 128M
+  memory: 256M
   instances: 1
