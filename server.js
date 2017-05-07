@@ -111,7 +111,7 @@ app.get("/logout", function(req, res){
 
 //Generat the main html page
 app.get('/',function(req,res){
-	res.sendfile(__dirname + '/views/intro.html');
+	res.sendfile(__dirname + '/views/index.html');
 });
 
 // Protected area. If current user is not authenticated - redirect to the login widget will be returned.

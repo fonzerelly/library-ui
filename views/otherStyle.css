@@ -5,6 +5,15 @@ body {
   /*background-image: url(https://www.brickrow.com/images/upload/carousel_4_1.jpg);*/
   background-image: url("images/carousel_4_1.jpg");
 }
+#intro-container {
+  align-items: center;
+}
+#login-btn {
+  padding: 10px 40px;
+}
+#login-btn-out {
+  padding: 10px 40px;
+}
 #convText {
   font-style: italic;
 }
@@ -31,10 +40,16 @@ body {
   color: #3E1300;
   border: none;
 }
-.modal {
+.modal-content {
   background-color: #F1F3D6;
   border-color: #F1F3D6;
   overflow: auto;
+}
+#logout-panel {
+  margin-top:40px;
+  margin-bottom:40px;
+  margin-left:30px;
+  margin-right:30px;
 }
 .panel {
   border-color: #A7652E;
