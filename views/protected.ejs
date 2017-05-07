@@ -18,8 +18,8 @@
   <script src="js/general.js"></script>
   <script>
     $('#userProfileImg').attr('src', '<%- picture %>');
-    var userEmail = JSON.parse('<%- email %>');
-    var userName = JSON.parse('<%- name %>');
+    var userEmail = '<%- email %>';
+    var userName = '<%- name %>';
     console.log("email: "+userEmail +", name: "+userName);
     if(userEmail != null) {
       console.log("starting...");
