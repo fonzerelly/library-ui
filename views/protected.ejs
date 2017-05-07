@@ -24,6 +24,9 @@
     var userEmail = '<%- email %>';
     var userName = '<%- name %>';
     console.log("email: "+userEmail +", name: "+userName);
+    var rootURLspeechNode;
+    var rootURLstartConv;
+    var rootURLconChat;
     if(userEmail != null) {
       console.log("starting...");
       startLibrary();
@@ -98,7 +101,8 @@
           <div class="panel-body">
             <div class="media">
               <div class="media-body">
-                <h1 class="media-heading">Hello <%= name %></h1>
+                <h2 class="media-heading">Hello <%= name %></h2>
+                <p></p>
                 <p>Your email address is <%= email %>.</p>
                 <p>To log out, click
                   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#logoutModal" id="logout-btn">
@@ -126,6 +130,9 @@
                   <button type="button" class="btn btn-default">
                   <span class="glyphicon glyphicon-ok"></span></button>
                   </a></p>
+              </div>
+              <div class="modal-footer">
+              <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
               </div>
             </div>
           </div>
