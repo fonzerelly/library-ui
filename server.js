@@ -98,9 +98,15 @@ app.get(LOGIN_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME, {
 app.get(CALLBACK_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME));
 
 // Logout endpoint. Clears authentication information from session
-app.get(LOGOUT_URL, function(req, res){
+/*app.get(LOGOUT_URL, function(req, res){
 	WebAppStrategy.logout(req);
 	res.redirect(LANDING_PAGE_URL);
+});*/
+
+//logout
+app.get("/logout", function(req, res){
+  WebAppStrategy.logout(req);
+  res.sendfile(__dirname + '/views/logout.html');
 });
 
 //Generat the main html page
