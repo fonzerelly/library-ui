@@ -5,7 +5,9 @@ var rootURLbooks = rootURL1 + "/books";
 console.log(rootURLbooks);
 var rootURLspeech = rootURL1 + '/text_to_speech';
 console.log(rootURLspeech);
+var rootURLspeechNode = protocol + '//' + myurl + "/gettoken";
 var token;
+
 
 /*$.ajax({
 	url: rootURLspeech,

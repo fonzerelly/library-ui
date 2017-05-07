@@ -17,7 +17,8 @@
   <script src="js/watson-speech.js"></script>
   <script src="js/general.js"></script>
   <script>
-    $('#userProfileImg').attr('src', '<%- picture %>');
+    var profileImg = '<%- picture %>';
+    document.getElementById('profileImage').src = '<%- picture %>';
     var userEmail = '<%- email %>';
     var userName = '<%- name %>';
     console.log("email: "+userEmail +", name: "+userName);
@@ -104,7 +105,7 @@
               </div>
               <div class="media-right">
                 <!--<img src="images/anonymous.svg" class="media-object" style="width:60px">-->
-                <img id="userProfileImg" class="media-object" style="width:60px">
+                <img id="profileImage" class="media-object" style="width:60px" src="images/anonymous.svg">
               </div>
             </div>
           </div>
