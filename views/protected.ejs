@@ -27,6 +27,7 @@
 </div>-->
 <script>
   $('#userNameSpan').html('<%= name %>');
+  console.log(name);
 </script>
 
 <div class="container-fluid">
@@ -83,7 +84,7 @@
 
       <div class="tab-pane fade" id="home">
         <h1> Hello <span id="userNameSpan"></span></h1>
-
+        <h1>Hello <%= name %> </h1>
       </div>
 
       <div class="tab-pane fade" id="bookdiv">

@@ -113,7 +113,7 @@ app.get('/',function(req,res){
 app.get("/protected", passport.authenticate(WebAppStrategy.STRATEGY_NAME), function(req, res){
 
 	//return the protected page with user info
-	res.render('protected',{name: req.user.name || "guest "});
+	res.render('protected',{name: req.user.name || "guest", picture: req.user.picture || "/images/anonymous.svg", email: req.user.email || "unkown-email"});
 });
 
 
