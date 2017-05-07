@@ -106,12 +106,12 @@ app.get(CALLBACK_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME));
 //logout
 app.get("/logout", function(req, res){
   WebAppStrategy.logout(req);
-  res.sendfile(__dirname + '/views/logout.html');
+  res.sendFile(__dirname + '/views/logout.html');
 });
 
 //Generat the main html page
 app.get('/',function(req,res){
-	res.sendfile(__dirname + '/views/index.html');
+	res.sendFile(__dirname + '/views/index.html');
 });
 
 // Protected area. If current user is not authenticated - redirect to the login widget will be returned.
