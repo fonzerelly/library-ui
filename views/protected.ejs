@@ -25,6 +25,9 @@
     <h1>Welcome to the library</h1>
   </div>
 </div>-->
+<script>
+  $('#userNameSpan').html('<%= name %>');
+</script>
 
 <div class="container-fluid">
   <nav class="navbar navbar-custom">
@@ -78,7 +81,10 @@
     <div class="col-sm-9">
     <div class="tab-content">
 
-      <div class="tab-pane fade" id="home"></div>
+      <div class="tab-pane fade" id="home">
+        <h1> Hello <span id="userNameSpan"></span></h1>
+
+      </div>
 
       <div class="tab-pane fade" id="bookdiv">
 
