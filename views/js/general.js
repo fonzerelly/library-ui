@@ -1,3 +1,5 @@
+function startLibrary(){
+
 var myurl = window.location.host;
 var protocol = window.location.protocol;
 myurlapi = protocol + '//' + myurl + "/apiuri";
@@ -20,3 +22,6 @@ console.log('url tts token: '+rootURLspeechNode);
 var rootURLstartConv = protocol + '//' + myurl + "/startConv";
 var rootURLconChat = protocol + '//' + myurl + "/say";
 console.log('url conv start: '+rootURLstartConv);
+
+
+}
