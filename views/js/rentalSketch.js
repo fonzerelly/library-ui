@@ -11,6 +11,10 @@ $(document).ready(function() {
   showUserRentals();
 })
 
+$(document).on("click", ".rentalsTableToggle", function(){
+  showUserRentals();
+})
+
 function showUserRentals() {
   $('#rentalsTableRows').empty();
   $.ajax({
