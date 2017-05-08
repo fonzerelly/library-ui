@@ -2,7 +2,7 @@
 function executeRental(){
 
   var rootURLrental = rootURL1 + "/rentals";
-  var rootURLuserrentals = rootURLrental + "/user/" + userEmail;
+  /*var rootURLuserrentals = rootURLrental + "/user/" + userEmail;*/
   console.log("user url: "+rootURLuserrentals);
   console.log(rootURL1);
   console.log(rootURLrental);

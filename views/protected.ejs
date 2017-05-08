@@ -27,6 +27,7 @@
     var rootURLspeechNode;
     var rootURLstartConv;
     var rootURLconChat;
+    var userCustomerId;
     if(userEmail != null) {
       console.log("starting...");
       startLibrary();
@@ -51,7 +52,7 @@
     <ul class="nav navbar-nav">
       <li><a data-toggle="tab" href="#home" id="homeLink">Home</a></li>
       <li><a data-toggle="tab" href="#bookdiv" id="bookLink">Books</a></li>
-      <li><a data-toggle="tab" href="#customerDiv" id="custlink">Customers</a></li>
+      <li><a data-toggle="tab" href="#customerDiv" id="custlink">Customer</a></li>
       <li><a data-toggle="tab" href="#rentalsDiv" id="rentalsLink">Borrow books</a></li>
     </ul>
   </nav>
@@ -234,53 +235,10 @@
       </div>
       <div class="tab-pane fade" id="customerDiv">
 
-        <div class="panel panel-default">
-          <div a href="#custAddToggle" data-toggle="collapse" class="toggleHeader panel-heading">
-            <h2>Add a customer</h2>
-          </div>
-          <div class="collapse" id="custAddToggle">
-            <div class="panel-body">
-              <form class="form-horizontal">
-                <!--<div class="form-group">
-                  <label class="control-label col-sm-2" for="cId">ID:</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control custInput" id="cId" placeholder="Enter ID">
-                  </div>
-                </div>-->
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="cName">Name:</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control custInput" id="cName" placeholder="Enter Name">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="cEmail">Email:</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control custInput" id="cEmail" placeholder="Enter Email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-2" for="cPassword">Password:</label>
-                  <div class="col-sm-5">
-                    <input type="text" class="form-control custInput" id="cPassword" placeholder="Enter Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-2">
-                      <button type="button" class="btn btn-default" id="addNewCustomer">add Customer</button>
-                    </div>
-                    <!--<div class="col-sm-1">
-                      <button type="button" class="btn btn-default" id="updateCustomer">update Customer</button>
-                    </div>-->
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
 
         <div class="panel panel-default">
           <div a href="#custTableToggle" data-toggle="collapse" class="toggleHeader panel-heading">
-            <h2>Registered customers</h2>
+            <h2>Registered data</h2>
           </div>
           <div class="collapse" id="custTableToggle">
             <div class="panel-body">
@@ -290,30 +248,11 @@
                     <th name="idName">ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Password</th>
-                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody id="customerTableRows">
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div a href="#CustomersRemoveToggle" data-toggle="collapse" class="toggleHeader panel-heading">
-            <h2>Delete all customers</h2>
-          </div>
-          <div class="collapse" id="CustomersRemoveToggle">
-            <div class="panel-body bigpopover">
-              <form class="form-horizontal">
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-2">
-                    <button type="button" class="btn btn-default" data-toggle="popover" id="deleteAllCustomersbtn">Delete all</button>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
         </div>

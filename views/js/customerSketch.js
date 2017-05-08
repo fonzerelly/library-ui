@@ -22,6 +22,100 @@
 		});*/
 //}
 
+function user(){
+  var rootURLuser = rootURL1 + "/customers/user/" + userEmail;
+  var user-customer;
+  $(document).ready(function() {
+  	checkUser();
+  });
+
+  function checkUser(){
+    $.ajax({
+      url: rootURL1 + "/customers/user/" + userEmail,
+      type: 'GET',
+      success: function(data){
+        console.log('email search data: ' + data);
+        if(jQuery.isEmptyObject(data)){
+          addUserAsCustomer();
+        } else {
+          userCustomer = data[0];
+          userCustomerId = userCustomer.id;
+          showUserData(userCustomer);
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        alert('user/customer error: '+ textStatus);
+      }
+    });
+  }
+
+  function addUserAsCustomer() {
+  	console.log('addCustomer');
+    var json123 = formToJSONCustomer();
+    console.log(json123);
+  	$.ajax({
+  		type: 'POST',
+  		contentType: 'application/json',
+  		url: rootURL1 + "/customers",
+  		data: formToJSONUserCustomer(),
+  		success: function(data, textStatus, jqXHR){
+  			checkUser();
+  			/*$('.custInput').val('');*/
+  			$.bootstrapGrowl("You have been registered as a customer.", {type:'success', delay: 2000});
+  		},
+  		error: function(jqXHR, textStatus, errorThrown){
+  			alert('addCustomer error: ' + textStatus);
+  		}
+  	});
+  };
+
+    function formToJSONUserCustomer() {
+    	return JSON.stringify({
+    		"name": userName,
+    		"email": userEmail,
+    		"password": "default",
+    		});
+    };
+
+
+    function showUserData(customer){
+      $('#customerTableRows').empty();
+      $('#customerTableRows').append(
+        "<tr> <td>"+customer.id+"</td> <td>"+customer.name+"</td>"+
+        "<td>"+customer.email+"</td>"+'<td>'
+        +' </tr>'
+      );
+    };
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function executeCustomer(){
 
 var rootURLcust = rootURL1 + "/customers";

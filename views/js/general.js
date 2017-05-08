@@ -20,7 +20,7 @@ if(!(myurlapi== null || rootURLspeechNode==null || rootURLstartConv==null || roo
       console.log('The rootURL1 is: '+rootURL1);
       execute();
       executeRental();
-      executeCustomer();
+      user();
       executeConversation();
     }
   });
