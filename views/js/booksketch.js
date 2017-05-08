@@ -36,17 +36,17 @@ $(document).ready(function() {
 	});
 });
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	$('#addNewBook').click(function() {
 		addBook();
 	});
-})
+})*/
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	$('#updateBook').click(function() {
 		updateBook();
 	});
-})
+})*/
 
 //load table content
 $(document).ready(function(){
@@ -72,11 +72,11 @@ function showBooks(){
 				'<span class="glyphicon glyphicon-book"></span> </a>'+
 				'&nbsp;<a class="btn btn-default tags" data-toggle="popover" data-placement="left">'+
 				'<span class="glyphicon glyphicon-tags"></span></a>'+
-				'&nbsp;<a class="btn btn-default removeBook" data-toggle="popover" data-placement="left" >'+
+				/*'&nbsp;<a class="btn btn-default removeBook" data-toggle="popover" data-placement="left" >'+
 				'<span class="glyphicon glyphicon-remove">'+
-				'</span></a>'+
-				'&nbsp;<a class="btn btn-default updateBook" data-toggle="popover" data-placement="left">'+
-				'<span class="glyphicon glyphicon-pencil"></span></a>'+
+				'</span></a>'+*/
+				/*'&nbsp;<a class="btn btn-default updateBook" data-toggle="popover" data-placement="left">'+
+				'<span class="glyphicon glyphicon-pencil"></span></a>'+*/
 				'&nbsp;<a class="btn btn-default listenBook" data-placement="left">'+
 				'<span class="glyphicon glyphicon-volume-up"></span></a>'+
 				'<div class="pleaseHide">'+val.about_the_book+'</div>'+
@@ -98,7 +98,7 @@ function showBooks(){
 					return showCover(val);
 				}
 			});
-			$('[class="btn btn-default removeBook"]').popover({
+			/*$('[class="btn btn-default removeBook"]').popover({
 				html: true,
 				trigger: 'click',
 				content: function () {
@@ -109,14 +109,14 @@ function showBooks(){
 					'&nbsp; <button type="button" class="btn btn-default deleteNotBook">'+
 					'Cancel</button></div></p></div>';
 				}
-			});
+			});*/
 			//<div class="deleteDescription">Delete</div>
-			$(".btn.btn-default.removeBook").mouseover(function() {
+			/*$(".btn.btn-default.removeBook").mouseover(function() {
 					//$(".deleteDescription").show();
 			}).mouseout(function() {
 					$(".deleteDescription").hide();
-			});
-			$('[class="btn btn-default updateBook"]').popover({
+			});*/
+			/*$('[class="btn btn-default updateBook"]').popover({
 				html: true,
 				trigger: 'click',
 				content: function () {
@@ -141,7 +141,7 @@ function showBooks(){
 					'</form>'+
 					'</div>';
 				}
-			});
+			});*/
 		});
 	});
 }
@@ -168,7 +168,7 @@ $(document).on("click", ".listenBook", function (e) {
 	}
 })
 
-$(document).on("click", ".deleteNotBook", function (e) {
+/*$(document).on("click", ".deleteNotBook", function (e) {
 	var elem, evt = e ? e:event;
 	if (evt.srcElement)  elem = evt.srcElement;
 	else if (evt.target) elem = evt.target;
@@ -179,9 +179,9 @@ $(document).on("click", ".deleteNotBook", function (e) {
 	}
 	var butt = $(parent).find("a:nth-child(3)")[0];
 	$(butt).trigger('click');
-})
+})*/
 
-$(document).on("click", ".deleteCheckBook", function (e) {
+/*$(document).on("click", ".deleteCheckBook", function (e) {
 	var elem, evt = e ? e:event;
 	if (evt.srcElement)  elem = evt.srcElement;
 	else if (evt.target) elem = evt.target;
@@ -193,7 +193,7 @@ $(document).on("click", ".deleteCheckBook", function (e) {
 	var id = $(parent).find("td:nth-child(1)"); //gets first td of row
 	var id = id[0].innerHTML;	//id of rental
 	deleteBook(id, elem, parent);
-})
+})*/
 
 function showTags(data) {
 	if(data.hasOwnProperty('tags') && !jQuery.isEmptyObject(data.tags)){
@@ -217,7 +217,7 @@ function showCover(data) {
 	}
 }
 
-$(document).on("click", "#updateBookbtn", function (e) {
+/*$(document).on("click", "#updateBookbtn", function (e) {
 	var elem, evt = e ? e:event;
 	if (evt.srcElement)  elem = evt.srcElement;
 	else if (evt.target) elem = evt.target;
@@ -229,9 +229,9 @@ $(document).on("click", "#updateBookbtn", function (e) {
 	var id = $(parent).find("td:nth-child(1)"); //gets first td of row
 	var id = id[0].innerHTML;	//id of rental
 	updateBook(id, elem);
-})
+})*/
 
-function updateBook(valueID, element){
+/*function updateBook(valueID, element){
 	console.log('updateBook');
 	$.ajax({
 		type:'PUT',
@@ -253,7 +253,7 @@ function updateBook(valueID, element){
 			alert('update Book error: '+ textStatus);
 		}
 	})
-}
+}*/
 
 function speechBook(title, author, isbn){
 		WatsonSpeech.TextToSpeech.synthesize({
@@ -273,7 +273,7 @@ function speechAboutBook(title, author, isbn, about) {
 }
 
 
-function deleteBook(valueID, element, parent){
+/*function deleteBook(valueID, element, parent){
 	console.log('deleteBook');
 	console.log(element.tagName),
 	$.ajax({
@@ -294,10 +294,10 @@ function deleteBook(valueID, element, parent){
 			alert('delete Book error: ' + textStatus);
 		}
 	});
-}
+}*/
 
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	$('#deleteAllBooksbtn').popover({
 		html: true,
 		trigger: 'click',
@@ -312,9 +312,9 @@ $(document).ready(function(){
 			'<span class="glyphicon glyphicon-remove"></button></div></p></div>';
 		}
 	});
-})
+})*/
 
-$(document).on("click", ".removeBooksNot", function (e) {
+/*$(document).on("click", ".removeBooksNot", function (e) {
 	var butt = document.getElementById('deleteAllBooksbtn');
 	$(butt).trigger('click');
 })
@@ -341,7 +341,7 @@ function deleteAllBooks(){
 			alert('delete all books error: '+ textStatus);
 		}
 	})
-}
+}*/
 
 /*function updateBook(){
 	console.log('updateBook');
@@ -363,7 +363,7 @@ function deleteAllBooks(){
 	})
 }*/
 
-function addBook() {
+/*function addBook() {
 	console.log('addBook');
 	$.ajax({
 		type: 'POST',
@@ -382,10 +382,10 @@ function addBook() {
 			alert('add Book error: ' + textStatus);
 		}
 	});
-}
+}*/
 
 // Helper function to serialize all the form fields into a JSON string
-function formToJSONBook() {
+/*function formToJSONBook() {
 	var jsonbook = {"title": $('#title').val(),"isbn": $('#isbn').val(),"authors": []};
 	var authorsinput = $('#authors').val();
 	jsonbook.authors.push(authorsinput);
@@ -396,7 +396,7 @@ function formToJSONBookUpdate(valueID) {
 	var authorsinput = $('#authorsUpdate').val();
 	jsonbook.authors.push(authorsinput);
 	return JSON.stringify(jsonbook);
-}
+}*/
 
 
 
