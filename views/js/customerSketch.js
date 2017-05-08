@@ -24,7 +24,7 @@
 
 function user(){
   var rootURLuser = rootURL1 + "/customers/user/" + userEmail;
-  var user-customer;
+  var userCustomer;
   $(document).ready(function() {
   	checkUser();
   });
