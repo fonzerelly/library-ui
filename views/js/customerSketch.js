@@ -35,10 +35,10 @@ function user(){
       type: 'GET',
       success: function(data){
         console.log('email search data: ' + data);
-        if(data == null){
+        if(data.length === 0)){
           addUserAsCustomer();
         } else {
-          userCustomer = data;
+          userCustomer = data[0];
           userCustomerId = userCustomer.id;
           showUserData(userCustomer);
         }
