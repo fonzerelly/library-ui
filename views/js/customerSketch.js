@@ -51,7 +51,7 @@ function user(){
 
   function addUserAsCustomer() {
   	console.log('addCustomer');
-    var json123 = formToJSONCustomer();
+    var json123 = formToJSONUserCustomer();
     console.log(json123);
   	$.ajax({
   		type: 'POST',
