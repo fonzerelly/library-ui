@@ -22,6 +22,8 @@
 		});*/
 //}
 
+
+
 function user(){
   var rootURLuser = rootURL1 + "/customers/user/" + userEmail;
   var userCustomer;
