@@ -161,7 +161,7 @@ function updateRental(valueID, element) {
 				parent1 = parent1.parentElement;
 			}
 			$(parent1).trigger('click');
-      showRentals(); //load table
+      showUserRentals(); //load table
 			$.bootstrapGrowl("The rental "+valueID+" has been updated.", {type:'success', delay: 2000});
 
     },
