@@ -38,49 +38,49 @@ function showUserRentals() {
     				'<span class="glyphicon glyphicon-pencil"></span></a></p></td>'+
     				' </tr>'
     			);
+          $('.pleaseHideID').hide();
+          $('[class="btn btn-default returnBook"]').popover({
+    				html: true,
+    				trigger: 'click',
+    				content: function () {
+    					return '<div class="popoverContent"><p>Return this book?</p>'+
+    					'<p></p><p><div>'+
+    					'<button type="button" class="btn btn-default returnCheck">'+
+    					'<span class="glyphicon glyphicon-ok"></button>'+
+    					'&nbsp; <button type="button" class="btn btn-default returnNot">'+
+    					'Cancel</button></div></p></div>';
+    				}
+    			});
+          $('[class="btn btn-default updateRental"]').popover({
+    				html: true,
+    				trigger: 'click',
+    				content: function () {
+    					return '<div class="popoverContent">'+
+    					'<div class="col-sm-offset-2"><strong>Update Rental:</strong></div>'+
+    					'<form class="form-horizontal">'+
+    						'<div class="form-group">'+
+    							'<label class="control-label" for="startUpdate">Start Date:</label>'+
+    							'<input type="text" class="form-control rentalInput" id="startUpdate" placeholder="YYYY-MM-DD">'+
+    						'</div>'+
+    							'<div class="form-group">'+
+    								'<label class="control-label" for="endUpdate">End Date:</label>'+
+    								'<input type="text" class="form-control rentalInput" id="endUpdate" placeholder="YYYY-MM-DD">'+
+    							'</div>'+
+    							'<div class="form-group">'+
+    								'<button type="button" class="btn btn-default" id="updateRentalbtn">Update</button>'+
+    								'&nbsp; <button type="button" class="btn btn-default updateNot">'+
+    								'Cancel</button>'
+    							'</div>'+
+    						'</form>'+
+    						'</div>';
+    				}
+    			});
         },
         error: function(jqXHR, textStatus, errorThrown){
           alert('get book by id error: '+ textStatus);
         }
       })//-----------------------------------------------------------------------
 
-      $('.pleaseHideID').hide();
-      $('[class="btn btn-default returnBook"]').popover({
-				html: true,
-				trigger: 'click',
-				content: function () {
-					return '<div class="popoverContent"><p>Return this book?</p>'+
-					'<p></p><p><div>'+
-					'<button type="button" class="btn btn-default returnCheck">'+
-					'<span class="glyphicon glyphicon-ok"></button>'+
-					'&nbsp; <button type="button" class="btn btn-default returnNot">'+
-					'Cancel</button></div></p></div>';
-				}
-			});
-      $('[class="btn btn-default updateRental"]').popover({
-				html: true,
-				trigger: 'click',
-				content: function () {
-					return '<div class="popoverContent">'+
-					'<div class="col-sm-offset-2"><strong>Update Rental:</strong></div>'+
-					'<form class="form-horizontal">'+
-						'<div class="form-group">'+
-							'<label class="control-label" for="startUpdate">Start Date:</label>'+
-							'<input type="text" class="form-control rentalInput" id="startUpdate" placeholder="YYYY-MM-DD">'+
-						'</div>'+
-							'<div class="form-group">'+
-								'<label class="control-label" for="endUpdate">End Date:</label>'+
-								'<input type="text" class="form-control rentalInput" id="endUpdate" placeholder="YYYY-MM-DD">'+
-							'</div>'+
-							'<div class="form-group">'+
-								'<button type="button" class="btn btn-default" id="updateRentalbtn">Update</button>'+
-								'&nbsp; <button type="button" class="btn btn-default updateNot">'+
-								'Cancel</button>'
-							'</div>'+
-						'</form>'+
-						'</div>';
-				}
-			});
     });
   });
 }
