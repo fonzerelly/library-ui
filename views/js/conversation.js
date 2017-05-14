@@ -105,7 +105,7 @@ function executeConversation(){
               var titledBooks = "";
               var i;
               for(i=0; i<data.output.books_by_title.length; i++) {
-                titledBooks = titledBooks + data.output.books_by_title[i].id +'<br>'
+                titledBooks = titledBooks + data.output.books_by_title[i].author +'<br>'
               }
               borrowBid = data.output.books_by_title[0].id;
               $('#convText').append(

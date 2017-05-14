@@ -28,21 +28,22 @@ function showUserRentals() {
         url: rootURLbooks+"/"+val.bookuri,
         success: function(data, textStatus, jqXHR){
           book = data;
+          $('#rentalsTableRows').append(
+    				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+book.title+' by '+book.author+'</td> <td class="dateTd">'
+            +val.start+'</td> <td class="dateTd">'+val.end+'</td>'+
+    				'<td>'+'<p><a class="btn btn-default returnBook" data-toggle="popover" data-placement="left" >'
+            +'<span class="glyphicon glyphicon-remove">'+
+    				'</span></a></p>'+
+    				'<p><a class="btn btn-default updateRental" data-toggle="popover" data-placement="left">'+
+    				'<span class="glyphicon glyphicon-pencil"></span></a></p></td>'+
+    				' </tr>'
+    			);
         },
         error: function(jqXHR, textStatus, errorThrown){
           alert('get book by id error: '+ textStatus);
         }
       })//-----------------------------------------------------------------------
-      $('#rentalsTableRows').append(
-				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+book.title+' by '+book.author+'</td> <td class="dateTd">'
-        +val.start+'</td> <td class="dateTd">'+val.end+'</td>'+
-				'<td>'+'<p><a class="btn btn-default returnBook" data-toggle="popover" data-placement="left" >'
-        +'<span class="glyphicon glyphicon-remove">'+
-				'</span></a></p>'+
-				'<p><a class="btn btn-default updateRental" data-toggle="popover" data-placement="left">'+
-				'<span class="glyphicon glyphicon-pencil"></span></a></p></td>'+
-				' </tr>'
-			);
+
       $('.pleaseHideID').hide();
       $('[class="btn btn-default returnBook"]').popover({
 				html: true,
