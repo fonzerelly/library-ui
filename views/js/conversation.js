@@ -105,7 +105,12 @@ function executeConversation(){
               var titledBooks = "";
               var i;
               for(i=0; i<data.output.books_by_title.length; i++) {
-                titledBooks = titledBooks + data.output.books_by_title[i].author +'<br>'
+                var auth = "No authors found.";
+          			if(data.output.books_by_title[i].hasOwnProperty('authors')){
+          				auth = data.output.books_by_title[i].authors;
+          				if(data.output.books_by_title.authors[i].length === 0)	auth = "No authors found";
+          			}
+                titledBooks = titledBooks + auth +'<br>'
               }
               borrowBid = data.output.books_by_title[0].id;
               $('#convText').append(
