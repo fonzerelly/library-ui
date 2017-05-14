@@ -149,7 +149,9 @@ function executeConversation(){
   }
 
   function borrowBook(borrowBid, borrowCid, borrowStartDate, borrowEndDate){
-    addRentalConv(borrowBid, borrowCid, borrowStartDate, borrowEndDate);
+    if(!(borrowEndDate==null) && !(borrowStartDate==null)) {
+      addRentalConv(borrowBid, borrowCid, borrowStartDate, borrowEndDate);
+    }
   }
 
   function controlScroll() {
