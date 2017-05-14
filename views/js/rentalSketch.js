@@ -4,6 +4,7 @@ function executeRental(){
   var rootURLrental = rootURL1 + "/rentals";
   /*var rootURLuserrentals = rootURLrental + "/user/" + userEmail;
   console.log("user url: "+rootURLuserrentals);*/
+  var rootURLbooks = rootURL1 +"/books";
   console.log(rootURL1);
   console.log(rootURLrental);
 
@@ -20,9 +21,20 @@ function showUserRentals() {
   $.ajax({
 			url: rootURLrental+'/user/'+userCustomerId
 	}).then(function(data) {
+    var book;
 		$.each( data, function( key, val ) {
+      $.ajax({
+        type: 'GET',
+        url: rootURLbooks+val.bookuri,
+        success: function(data, textStatus, jqXHR){
+          book = data;
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+          alert('get book by id error: '+ textStatus);
+        }
+      })//-----------------------------------------------------------------------
       $('#rentalsTableRows').append(
-				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+val.bookuri+'</td> <td class="dateTd">'
+				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+book.title+' by '+book.author+'</td> <td class="dateTd">'
         +val.start+'</td> <td class="dateTd">'+val.end+'</td>'+
 				'<td>'+'<p><a class="btn btn-default returnBook" data-toggle="popover" data-placement="left" >'
         +'<span class="glyphicon glyphicon-remove">'+
