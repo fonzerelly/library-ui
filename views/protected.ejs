@@ -156,7 +156,7 @@
               <table class="table table-hover bookTable">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <th class="pleaseHideThis">ID</th>
                     <th>Title</th>
                     <th>Authors</th>
                     <th>ISBN</th>
@@ -261,7 +261,7 @@
               <table class="table table-hover" data-unique-id="rentalUniqueId">
                 <thead>
                   <tr>
-                    <th data-field="rentalUniqueId">ID</th>
+                    <th data-field="rentalUniqueId" class="plaseHideThis">ID</th>
                     <th data-field="bookid">Book</th>
                     <th data-field="start">Start</th>
                     <th data-field="end">End</th>
@@ -274,6 +274,9 @@
             </div>
           </div>
         </div>
+
+        <script>$('.pleaseHideThis').hide();
+        </script>
 
         <div class="panel panel-default">
           <div a href="#RentalsRemoveToggle" data-toggle="collapse" class="toggleHeader panel-heading">

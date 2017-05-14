@@ -67,7 +67,7 @@ function showBooks(){
 				if(val.authors.length === 0)	auth = "No authors found";
 			}
 			$('#bookTableRows').append(
-				'<tr> <td>'+val.id+'</td> <td>'+val.title+'</td> <td>'+auth+'</td> <td>'+val.isbn+'</td>'+
+				'<tr> <td class="pleaseHide">'+val.id+'</td> <td>'+val.title+'</td> <td>'+auth+'</td> <td>'+val.isbn+'</td>'+
 				'<td> <a class="btn btn-default cover" data-toggle="popover" data-placement="left">'+
 				'<span class="glyphicon glyphicon-book"></span> </a>'+
 				'&nbsp;<a class="btn btn-default tags" data-toggle="popover" data-placement="left">'+

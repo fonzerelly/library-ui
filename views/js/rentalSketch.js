@@ -22,7 +22,7 @@ function showUserRentals() {
 	}).then(function(data) {
 		$.each( data, function( key, val ) {
       $('#rentalsTableRows').append(
-				'<tr> <td>'+val.id+'</td> <td>'+val.bookuri+'</td> <td class="dateTd">'
+				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+val.bookuri+'</td> <td class="dateTd">'
         +val.start+'</td> <td class="dateTd">'+val.end+'</td>'+
 				'<td>'+'<p><a class="btn btn-default returnBook" data-toggle="popover" data-placement="left" >'
         +'<span class="glyphicon glyphicon-remove">'+
@@ -31,6 +31,7 @@ function showUserRentals() {
 				'<span class="glyphicon glyphicon-pencil"></span></a></p></td>'+
 				' </tr>'
 			);
+      $('.pleaseHideID').hide();
       $('[class="btn btn-default returnBook"]').popover({
 				html: true,
 				trigger: 'click',
