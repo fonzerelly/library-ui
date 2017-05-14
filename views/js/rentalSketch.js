@@ -25,7 +25,7 @@ function showUserRentals() {
 		$.each( data, function( key, val ) {
       $.ajax({
         type: 'GET',
-        url: rootURLbooks+val.bookuri,
+        url: rootURLbooks+"/"+val.bookuri,
         success: function(data, textStatus, jqXHR){
           book = data;
         },
