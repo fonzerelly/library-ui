@@ -100,7 +100,7 @@ $(document).on("click", ".returnNot", function (e) {
 	while(!(parent.tagName=='TD')) {
 		parent = parent.parentElement;
 	}
-	$(parent.firstChild).trigger('click');
+	$(parent.firstChild.firstChild).trigger('click');
 })
 
 //still used
