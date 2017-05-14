@@ -108,7 +108,7 @@ function executeConversation(){
                 var auth = "No authors found.";
           			if(data.output.books_by_title[i].hasOwnProperty('authors')){
           				auth = data.output.books_by_title[i].authors;
-          				if(data.output.books_by_title.authors[i].length === 0)	auth = "No authors found";
+          				if(data.output.books_by_title[i].authors.length === 0)	auth = "No authors found";
           			}
                 titledBooks = titledBooks + auth +'<br>'
               }
