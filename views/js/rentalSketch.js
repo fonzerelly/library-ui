@@ -28,8 +28,13 @@ function showUserRentals() {
         url: rootURLbooks+"/"+val.bookuri,
         success: function(data, textStatus, jqXHR){
           book = data;
+          var auth = "No authors found.";
+    			if(book.hasOwnProperty('authors')){
+    				auth = book.authors;
+    				if(book.authors.length === 0)	auth = "No authors found";
+    			}
           $('#rentalsTableRows').append(
-    				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+book.title+' by '+book.author+'</td> <td class="dateTd">'
+    				'<tr> <td class="pleaseHideID">'+val.id+'</td> <td>'+book.title+' by '+auth+'</td> <td class="dateTd">'
             +val.start+'</td> <td class="dateTd">'+val.end+'</td>'+
     				'<td>'+'<p><a class="btn btn-default returnBook" data-toggle="popover" data-placement="left" >'
             +'<span class="glyphicon glyphicon-remove">'+
