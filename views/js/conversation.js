@@ -82,6 +82,21 @@ function executeConversation(){
             } else {
               //save book to rent
               borrowBid = chosenBooksList[0].id;
+              var inputYes = {"user_input": "yes", "context": lastContext};
+              $.ajax({
+                type: 'PUT',
+                contentType: 'application/json',
+                url: rootURLconChat,
+                dataType: 'json',
+                data: JSON.stringify(inputYes),
+                success: function(data, textStatus, jqXHR){
+                  console.log(data);
+                  lastContext = data.context;
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                  alert('conversation error: '+ textStatus);
+                }
+              });
             }
           }
           if(data.output.action=='borrow-save-cid') {
