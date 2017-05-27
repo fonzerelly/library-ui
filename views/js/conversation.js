@@ -92,6 +92,9 @@ function executeConversation(){
                 success: function(data, textStatus, jqXHR){
                   console.log(data);
                   lastContext = data.context;
+                  $('#convText').append(
+                    '<p style="text-align:left;">'+data.output.text+'</p>'
+                  );
                 },
                 error: function(jqXHR, textStatus, errorThrown){
                   alert('conversation error: '+ textStatus);
