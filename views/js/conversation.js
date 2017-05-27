@@ -123,9 +123,24 @@ function executeConversation(){
             if(jQuery.isEmptyObject(data.output.books_by_title)){
               $('#convText').append(
                 '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-                +'<p style="text-align:left;">'+data.output.text[1]+'</p>'
-                //somehow trigger answer:no for askBorrow which follows automatically
+                +'<p style="text-align:left;">'+data.output.text[1]+' '+data.output.action_param+'.</p>'
               );
+              // trigger answer:no for askBorrow which follows automatically
+              var inputNo = {"user_input": "no", "context": lastContext};
+              $.ajax({
+                type: 'PUT',
+                contentType: 'application/json',
+                url: rootURLconChat,//rootURLconv,
+                dataType: 'json',
+                data: JSON.stringify(inputNo),
+                success: function(data, textStatus, jqXHR){
+                  console.log(data);
+                  lastContext = data.context;
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                  alert('conversation error: '+ textStatus);
+                }
+              });
             } else {
               var titledBooks = "";
               var i;
