@@ -2,14 +2,14 @@
 
 **These instructions are not up to date.**
 
-This is the second part of the Library Application: [https://github.com/florae123/LibraryApp](https://github.com/florae123/LibraryApp).
+This is the second part of the Library Application: [https://github.com/florae123/LibraryApp-user](https://github.com/florae123/LibraryApp-user).
 
 This part consists of a Node.js server and the web UI.
 It is built using HTML, CSS, Bootstrap, jQuery, and a Watson Text-To-Speech Service, a Watson Conversation Service as well as the App ID Service on Bluemix.
 
 This first part is a backend server running on Java Liberty on Bluemix that connects to a Cloudant NoSQL Database.
 
-  ![Architecture](./images/architecture-node.jpg)
+  ![Architecture](./images/architecture-node.png)
 
 ## Deploy to Bluemix
 
