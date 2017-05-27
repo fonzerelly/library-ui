@@ -87,7 +87,7 @@ function executeConversation(){
           if(jQuery.isEmptyObject(data.output.selected_books)){
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-              +'<p style="text-align:left;">'+data.output.text.values[1]+'</p>'
+              +'<p style="text-align:left;">'+data.output.text[1]+' '+data.output.action_param +'.</p>'
             );
           } else {
             var selectedBooks = "";
@@ -97,7 +97,7 @@ function executeConversation(){
             }
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-              +'<p style="text-align:left;">'+data.output.text.values[0]+'<br><strong>'+selectedBooks+'</strong></p>'
+              +'<p style="text-align:left;">'+data.output.text[0]+'<br><strong>'+selectedBooks+'</strong></p>'
             );
           }
         //if parameter books_by_title specified, search for books by title and display id
