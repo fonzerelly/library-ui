@@ -106,7 +106,7 @@ function executeConversation(){
           if(jQuery.isEmptyObject(data.output.books_by_author)){
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-              +'<p style="text-align:left;">'+data.output.text+'</p>'
+              +'<p style="text-align:left;">'+data.output.text[1]+' '+data.output.action_param+'.</p>'
             );
           } else {
             var authorBooks = "";
@@ -116,14 +116,15 @@ function executeConversation(){
             }
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-              +'<p style="text-align:left;">'+data.output.text+'<br><strong>'+authorBooks+'</strong></p>'
+              +'<p style="text-align:left;">'+data.output.text[0]+'<br><strong>'+authorBooks+'</strong></p>'
             );
           }
       } else if (data.output.hasOwnProperty('books_by_title')) {
             if(jQuery.isEmptyObject(data.output.books_by_title)){
               $('#convText').append(
                 '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-                +'<p style="text-align:left;">'+data.output.text+'</p>'
+                +'<p style="text-align:left;">'+data.output.text[1]+'</p>'
+                //somehow trigger answer:no for askBorrow which follows automatically
               );
             } else {
               var titledBooks = "";
@@ -140,7 +141,7 @@ function executeConversation(){
               $('#convText').append(
                 '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
                 +'<p style="text-align:left;">'+data.output.text[0]+'<br><strong>'+titledBooks+'</strong>'+
-                data.output.text[1]+'</p>'
+                data.output.text[2]+'</p>'
               );
             }
         // if no other parameter specified, just display the output text
