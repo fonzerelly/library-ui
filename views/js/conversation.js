@@ -47,6 +47,8 @@ function executeConversation(){
     })
   }
 
+  var chosenBooksList;
+
   //not complete
   function say(){
     $.ajax({
@@ -60,6 +62,25 @@ function executeConversation(){
         lastContext = data.context;
         //save data to register rental
         if (data.output.hasOwnProperty('action')) {
+          if(data.output.action=='borrowRequest') {
+            if(!(chosenBooksList.length==1)) {
+              var inputNo = {"user_input": "no", "context": lastContext};
+              $.ajax({
+                type: 'PUT',
+                contentType: 'application/json',
+                url: rootURLconChat,
+                dataType: 'json',
+                data: JSON.stringify(inputNo),
+                success: function(data, textStatus, jqXHR){
+                  console.log(data);
+                  lastContext = data.context;
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                  alert('conversation error: '+ textStatus);
+                }
+              });
+            } //else: nothing
+          }
           if(data.output.action=='borrow-save-cid') {
             borrowCid = data.input.text;
             console.log('Customer id: '+borrowCid);
@@ -84,6 +105,7 @@ function executeConversation(){
         }
         //if parameter selected_books specified, search for book by tag and display books
         if(data.output.hasOwnProperty('selected_books')) {
+          chosenBooksList = data.output.selected_books;
           if(jQuery.isEmptyObject(data.output.selected_books)){
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
@@ -103,11 +125,28 @@ function executeConversation(){
         //if parameter books_by_title specified, search for books by title and display id
         //save the book with this title in case of rental
       } else if (data.output.hasOwnProperty('books_by_author')) {
+          chosenBooksList = data.output.books_by_author;
           if(jQuery.isEmptyObject(data.output.books_by_author)){
             $('#convText').append(
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
               +'<p style="text-align:left;">'+data.output.text[1]+' '+data.output.action_param+'.</p>'
             );
+            //trigger answer:no to avoid rental process
+            var inputNo = {"user_input": "no", "context": lastContext};
+            $.ajax({
+              type: 'PUT',
+              contentType: 'application/json',
+              url: rootURLconChat,//rootURLconv,
+              dataType: 'json',
+              data: JSON.stringify(inputNo),
+              success: function(data, textStatus, jqXHR){
+                console.log(data);
+                lastContext = data.context;
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                alert('conversation error: '+ textStatus);
+              }
+            });
           } else {
             var authorBooks = "";
             var i;
@@ -120,6 +159,7 @@ function executeConversation(){
             );
           }
       } else if (data.output.hasOwnProperty('books_by_title')) {
+            chosenBooksList = data.output.books_by_title;
             if(jQuery.isEmptyObject(data.output.books_by_title)){
               $('#convText').append(
                 '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
