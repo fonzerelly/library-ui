@@ -213,8 +213,10 @@ $(document).on("click", ".addRentalToggle", function(e) {
 		if(i!=0){
 			var $row = $(row);
 			var $tempBId = $row[0].children[0].innerHTML;
+      var $tempTitle = $row[0].children[1].innerHTML;
+      var $tempAuthor = $row[0].children[2].innerHTML;
 			$('#selBid').append(
-				'<option>'+$tempBId+'</option>'
+				'<option value='+$tempBId+'>'+$tempTitle+' by '+$tempAuthor+'</option>'
 			);
 		}
 	});
@@ -252,7 +254,7 @@ function addRental() {
 function formToJSONRental() {
 	return JSON.stringify({
 		"id": "1",
-		"bookid": $('#selBid').find("option:selected").text(),
+		"bookid": $('#selBid').find("option:selected").val(),
 		"customerid": userCustomerId,
 		"start": $('#start').val(),
     "end": $('#end').val(),
