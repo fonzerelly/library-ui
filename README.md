@@ -1,7 +1,5 @@
 # LibraryUI
 
-**These instructions are not up to date.**
-
 This is the second part of the Library Application: [https://github.com/florae123/LibraryApp-user](https://github.com/florae123/LibraryApp-user).
 
 This part consists of a Node.js server and the web UI.
