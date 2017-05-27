@@ -79,7 +79,10 @@ function executeConversation(){
                   alert('conversation error: '+ textStatus);
                 }
               });
-            } //else: nothing
+            } else {
+              //save book to rent
+              borrowBid = chosenBooksList[0].id;
+            }
           }
           if(data.output.action=='borrow-save-cid') {
             borrowCid = data.input.text;
@@ -111,6 +114,22 @@ function executeConversation(){
               '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
               +'<p style="text-align:left;">'+data.output.text[1]+' '+data.output.action_param +'.</p>'
             );
+            //trigger answer:no
+            var inputNo = {"user_input": "no", "context": lastContext};
+            $.ajax({
+              type: 'PUT',
+              contentType: 'application/json',
+              url: rootURLconChat,//rootURLconv,
+              dataType: 'json',
+              data: JSON.stringify(inputNo),
+              success: function(data, textStatus, jqXHR){
+                console.log(data);
+                lastContext = data.context;
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                alert('conversation error: '+ textStatus);
+              }
+            });
           } else {
             var selectedBooks = "";
             var i;
