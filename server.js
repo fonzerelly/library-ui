@@ -229,6 +229,20 @@ app.put('/say', function(req, res) {
             return;
           }
         })
+      } else if (data.output.action == 'search_author' && data.outpunt.hasOwnProperty('action_param')) {
+        var author = data.output.action_param;
+        //get books request
+        request(libraryURI+'/books/author/'+author, function (error, response, body) {
+          if (error) {
+            console.error(error);
+          }
+          if (!error && response.statusCode == 200) {
+            data.output.books_by_author = JSON.parse(body);
+            //console.log('data before sending: '+JSON.stringify(data.output));
+            res.json(data);
+            return;
+          }
+        })
 
       } else if (data.output.action == 'select_books' && data.output.hasOwnProperty('action_param')) {
         //get selected books ajax call

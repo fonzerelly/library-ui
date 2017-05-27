@@ -84,18 +84,42 @@ function executeConversation(){
         }
         //if parameter selected_books specified, search for book by tag and display books
         if(data.output.hasOwnProperty('selected_books')) {
-          var selectedBooks = "";
-          var i;
-          for(i=0; i<data.output.selected_books.length; i++) {
-            selectedBooks = selectedBooks + data.output.selected_books[i].title + '<br>'
+          if(jQuery.isEmptyObject(data.output.selected_books)){
+            $('#convText').append(
+              '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
+              +'<p style="text-align:left;">'+data.output.text.values[1]+'</p>'
+            );
+          } else {
+            var selectedBooks = "";
+            var i;
+            for(i=0; i<data.output.selected_books.length; i++) {
+              selectedBooks = selectedBooks + data.output.selected_books[i].title + '<br>'
+            }
+            $('#convText').append(
+              '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
+              +'<p style="text-align:left;">'+data.output.text.values[0]+'<br><strong>'+selectedBooks+'</strong></p>'
+            );
           }
-          $('#convText').append(
-            '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
-            +'<p style="text-align:left;">'+data.output.text+'<br><strong>'+selectedBooks+'</strong></p>'
-          );
         //if parameter books_by_title specified, search for books by title and display id
         //save the book with this title in case of rental
-        } else if (data.output.hasOwnProperty('books_by_title')) {
+      } else if (data.output.hasOwnProperty('books_by_author')) {
+          if(jQuery.isEmptyObject(data.output.books_by_author)){
+            $('#convText').append(
+              '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
+              +'<p style="text-align:left;">'+data.output.text+'</p>'
+            );
+          } else {
+            var authorBooks = "";
+            var i;
+            for(i=0; i<data.output.books_by_author.length; i++) {
+              authorBooks = authorBooks + data.output.books_by_author[i].title + '<br>'
+            }
+            $('#convText').append(
+              '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
+              +'<p style="text-align:left;">'+data.output.text+'<br><strong>'+authorBooks+'</strong></p>'
+            );
+          }
+      } else if (data.output.hasOwnProperty('books_by_title')) {
             if(jQuery.isEmptyObject(data.output.books_by_title)){
               $('#convText').append(
                 '<p style="text-align:right;">'+$('#convUserText').val()+'</p>'
