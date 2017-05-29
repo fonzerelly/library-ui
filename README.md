@@ -47,22 +47,23 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 	cf login
 	```
 
-5. a. Create a Node.JS Cloud Foundry App on Bluemix.
-Give it the same name (**LibraryUI**) and host name as defined in the **manifest.yml** file.
-  ![](./images/nodejsapp.png)
+5.  * Create a Node.JS Cloud Foundry App on Bluemix.
+      Give it the same name (**LibraryUI**) and host name as defined in the **manifest.yml** file.
 
-  b. Create a toolchain for this Cloud Foundry app:
-  In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
+      ![](./images/nodejsapp.png)
 
-  ![](./images/createtoolchain.png)
+    * Create a toolchain for this Cloud Foundry app:
+      In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
 
-  Choose **repository type: new** to create a new git repository for your app.
+      ![](./images/createtoolchain.png)
 
-  ![](./images/gitrepo.png)
+      Choose **repository type: new** to create a new git repository for your app.
 
-  Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
-  
-  ![](.(images/toolchaingit.png)
+      ![](./images/gitrepo.png)
+
+      Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
+      
+      ![](.(images/toolchaingit.png)
 
 6. Create a Watson Text-To-Speech Service and connect it to the app LibraryUI.
 
