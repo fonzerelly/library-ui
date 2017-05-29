@@ -62,8 +62,8 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
       ![](./images/gitrepo.png)
 
       Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
-      
-      ![](.(images/toolchaingit.png)
+
+      ![](./images/toolchaingit.png)
 
 6. Create a Watson Text-To-Speech Service and connect it to the app LibraryUI.
 
