@@ -100,22 +100,22 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 
 9. Push the application code to your git repository. *<your-url>* should be replaced by the url of the GitLab repository.
 
-  ```
-  git remote set-url origin <your-url>
-  git add *
-  git commit -m “first commit”
-  git push origin master
-  ```
-  You may need to add an SSH key to your GitLab account.
-  To locate an existing SSH key pair:
-  ```
-  cat ~/.ssh/id_rsa.pub
-  ```
-  To generate a new SSH key pair:
-  ```
-  ssh-keygen -t rsa -C "your.email@example.com" -b 4096
-  cat ~/.ssh/id_rsa.pub
-  ```
-  Copy the entire key starting with ssh-rsa.
-  Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
-  Paste your key in the 'Key' section and give it a relevant 'Title'.
+    ```
+    git remote set-url origin <your-url>
+    git add *
+    git commit -m “first commit”
+    git push origin master
+    ```
+    You may need to add an **SSH key** to your GitLab account.
+    To locate an existing SSH key pair:
+    ```
+    cat ~/.ssh/id_rsa.pub
+    ```
+    To generate a new SSH key pair:
+    ```
+    ssh-keygen -t rsa -C "your.email@example.com" -b 4096
+    cat ~/.ssh/id_rsa.pub
+    ```
+    Copy the entire key starting with ssh-rsa.
+    Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
+    Paste your key in the 'Key' section and give it a relevant 'Title'.
