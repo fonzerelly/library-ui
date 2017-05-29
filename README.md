@@ -47,11 +47,17 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 	cf login
 	```
 
-5. Push the app to Bluemix. Because some services are not connected to the app yet, it may stop as "failed".
+5. a. Create a Node.JS Cloud Foundry App on Bluemix.
+Give it the same name (**LibraryUI**) and host name as defined in the **manifest.yml** file.
+  ![](./images/nodejsapp.png)
 
-	```
-	cf push LibraryUI
-	```
+  b. Create a toolchain for this Cloud Foundry app:
+  In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
+  ![](./images/createtoolchain.png)
+  Choose **repository type: new** to create a new git repository for your app.
+  ![](./images/gitrepo.png)
+  Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
+  ![](.(images/toolchaingit.png)
 
 6. Create a Watson Text-To-Speech Service and connect it to the app LibraryUI.
 
@@ -86,4 +92,24 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     * You can keep the default configurations under *Identity Providers*, *Login Customization* and *Profiles*. Or you can adjust them as you choose, for example by uploading the image **views/images/bookshelf.jpg** in the login cumstomization.
     * Connect it to the app LibraryUI.
 
-9. Redeploy the application by repeating step 5: ```cf push LibraryUI```
+9. Push the application code to your git repository. *<your-url>* should be replaced by the url of the GitLab repository.
+
+  ```
+  git remote set-url origin <your-url>
+  git add *
+  git commit -m “first commit”
+  git push origin master
+  ```
+  You may need to add an SSH key to your GitLab account.
+  To locate an existing SSH key pair:
+  ```
+  cat ~/.ssh/id_rsa.pub
+  ```
+  To generate a new SSH key pair:
+  ```
+  ssh-keygen -t rsa -C "your.email@example.com" -b 4096
+  cat ~/.ssh/id_rsa.pub
+  ```
+  Copy the entire key starting with ssh-rsa.
+  Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
+  Paste your key in the 'Key' section and give it a relevant 'Title'.
