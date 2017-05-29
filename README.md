@@ -85,7 +85,7 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
         ![details](./images/workspace-id.png)
 
     * Copy the **Workspace ID** to the clipboard.
-    * Replace it with the current value for *workspace_id_copy* in line 96 in **server.js**.
+    * Replace it with the current value for *workspace_id_copy* in line 126 in **server.js**.
 
         ```
         //authenticate conversation service
