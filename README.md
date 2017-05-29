@@ -53,10 +53,15 @@ Give it the same name (**LibraryUI**) and host name as defined in the **manifest
 
   b. Create a toolchain for this Cloud Foundry app:
   In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
+
   ![](./images/createtoolchain.png)
+
   Choose **repository type: new** to create a new git repository for your app.
+
   ![](./images/gitrepo.png)
+
   Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
+  
   ![](.(images/toolchaingit.png)
 
 6. Create a Watson Text-To-Speech Service and connect it to the app LibraryUI.
