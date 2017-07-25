@@ -9,6 +9,27 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 
   ![Architecture](./images/architecture-node.png)
 
+## Prerequisites
+
+  The software needed for the following steps:
+  * Cloud Foundry Command Line Interface ([Download here](https://github.com/cloudfoundry/cli/releases)),
+  * Git tool ([Download here](https://git-scm.com/downloads))
+
+  Another requirement is an IBM Bluemix Account.
+
+### Install the Cloud Foundry CLI
+
+  If the Cloud Foundry Command Line Interface is not yet installed on your machine, use the following commands to install it (for Ubuntu based Linux distributions):
+
+  ```
+  # ...first add the Cloud Foundry Foundation public key and package repository to your system
+  wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+  echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+  # ...then, update your local package index, then finally install the cf CLI
+  sudo apt-get update
+  sudo apt-get install cf-cli
+  ```
+
 ## Deploy to Bluemix
 
 1. * Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
@@ -35,7 +56,7 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 
       ```
       LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
-      ´´´
+      ```
 
     Change the host name *LibraryUI-[myName]* to something unique. For example, you can replace [myName] with your name.
 
@@ -78,7 +99,7 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 7. Create a Watson Conversation Service and bind it to the app. Launch, and import a workspace using the file **conversation-workspace-user-adjusted.json**. Connect it to the app.
 
     * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. You will be directed to a view of the service.
-    * To bind this service instance to the node.js application, open the **Connections** panel, and click **Create Connection**. Then select the LibraryUI applicaton and click **Connect**. Restage the application when prompted.
+    * To bind this service instance to the node.js application, open the **Connections** panel, and click **Create Connection**. Then select the LibraryUI applicaton and click **Connect**. You can hold off restaging the application until the end of step 8.
     * Open the **Manage** panel and click **Launch tool**.
 
         ![Launch](./images/launch-conv.png)
@@ -104,7 +125,7 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     * Select the App ID Service from the Catalog.
     * Name your service instance and click **Create**.
     * You can keep the default configurations under *Identity Providers*, *Login Customization* and *Profiles*. Or you can adjust them as you choose, for example by uploading the image **views/images/bookshelf.jpg** in the login cumstomization.
-    * Connect it to the app LibraryUI.
+    * Connect it to the app LibraryUI and restage the application when prompted.
 
 9. Push the application code to your git repository. *<your-url>* should be replaced by the url of the GitLab repository.
 
@@ -126,4 +147,9 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     ```
     Copy the entire key starting with ssh-rsa.
     Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
+
+      ![settings](./images/gitlab-settings.png)
+
     Paste your key in the 'Key' section and give it a relevant 'Title'.
+
+      ![ssh-keys](./images/gitlab-ssh.png)
