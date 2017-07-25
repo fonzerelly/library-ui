@@ -11,7 +11,9 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
 
 ## Deploy to Bluemix
 
-1. Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
+1. * Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
+
+   * **Optional:** Connect to an existing app instead of deploying the Java back end yourself. To make sure the app is running, try this link: [https://library-server-demo-1.mybluemix.net/](https://library-server-demo-1.mybluemix.net/)
 
 2. Clone the app to your local environment from your terminal using the following command
 
@@ -19,15 +21,21 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     git clone https://github.com/florae123/libraryui-user-adjusted
     ```
 
-3. You can find the URL of your java library server under **All Apps** on the Bluemix dashboard for the region you used.
+3. * If you deployed your own back end app, you can find the URL of your java library server under **All Apps** on the Bluemix dashboard for the region you used.
 
-    ![dashboard-click](./images/dashboard.png)
+     ![dashboard-click](./images/dashboard.png)
 
-    Copy the URL.
+     Copy the URL.
 
-    ![url](./images/java-url.png)
+     ![url](./images/java-url.png)
 
-    Open the file **manifest.yml** and change the **"LIBRARY_URI"** to the URL of your java library server and add **"/api"** at the end: **https://[YOUR_LIBRARY_SERVER_URL]/api**
+     Open the file **manifest.yml** and change the **"LIBRARY_URI"** to the URL of your java library server and add **"/api"** at the end: **https://[YOUR_LIBRARY_SERVER_URL]/api**
+
+    * **Optional:** If you want to use an existing back end server, copy the URL "https://library-server-demo-1.mybluemix.net/api" to the file **manifest.yml**. It should look like this:
+
+      ```
+      LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
+      ´´´
 
     Change the host name *LibraryUI-[myName]* to something unique. For example, you can replace [myName] with your name.
 
