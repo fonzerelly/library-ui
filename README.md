@@ -149,7 +149,7 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
 
       ![settings](./images/gitlab-settings.png)
+      
+      ![ssh-keys](./images/gitlab-ssh.png)
 
     Paste your key in the 'Key' section and give it a relevant 'Title'.
-
-      ![ssh-keys](./images/gitlab-ssh.png)
