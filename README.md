@@ -10,9 +10,10 @@ It is built using HTML, CSS, Bootstrap, jQuery, and a Watson Text-To-Speech Serv
 ## Prerequisites
 ### Local tools
 To create an app for the cloud, in this lab you will use an open toolchain in the cloud, provided by the Bluemix Continuous Delivery service. Therefore, you will only need a minimum of software locally for the subsequent steps:
-    * An up-to-date web browser, e.g. Firefox, Chrome, Safari, …
-    * Any text editor (like Eclipse, Atom, Brackets, vim … or whatever you prefer)
-    * Git client ([Download here](https://git-scm.com/downloads))
+
+* An up-to-date web browser, e.g. Firefox, Chrome, Safari, …
+* Any text editor (like Eclipse, Atom, Brackets, vim … or whatever you prefer)
+* Git client ([Download here](https://git-scm.com/downloads))
 
   Another requirement is an [IBM Bluemix Account](https://console.bluemix.net/registration).
 
@@ -36,11 +37,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
 ## Deploy to Bluemix
 
-1. * Connect to an existing app instead of deploying the Java back end yourself. To make sure the app is running, try this link: [https://library-server-demo-1.mybluemix.net/](https://library-server-demo-1.mybluemix.net/)
-
-   * **Optional:** Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
-
-2. Clone the app to your local environment from your terminal using the following command
+1. Clone the app to your local environment from your terminal using the following command
 
     ```
     git clone https://github.com/florae123/libraryui-user-adjusted
@@ -51,9 +48,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
   	cd libraryui-v2
 	```
 
-3. Open the file **manifest.yml** and change the **"LIBRARY_URI"** to the URL of your java library server and add **"/api"** at the end: **https://[YOUR_LIBRARY_SERVER_URL]/api**
-
-    * **Optional:** If you want to use an existing back end server, copy the URL "https://library-server-demo-1.mybluemix.net/api" to the file **manifest.yml**. It should look like this:
+2. Open the file **manifest.yml** and change the entry **"LIBRARY_URI"** to the URL of the existing backend server, extended by **"/api"**. It should look like this:
 
       ```
       LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
@@ -64,44 +59,25 @@ The text "... Library Backend Server is running ..." should be displayed in your
     ```
     applications:
     - name: LibraryUI
-      host: libraryui-tsuedbro
+      host: libraryui-heinmueck
       env:
         LIBRARY_URI: "https://library-server-tsuedbro.mybluemix.net/api"
       memory: 64M
       instances: 1
     ```
 
-4. Log in to your Bluemix account using the Cloud Foundry CLI tool.
-
-	```
-	cf login
-	```
-
-5.  * Create a Node.JS Cloud Foundry App on Bluemix.
+3.  Create a Node.JS Cloud Foundry App on Bluemix.
       Give it the same name (**LibraryUI**) and host name as defined in the **manifest.yml** file.
 
       ![](./images/nodejsapp.png)
 
-    * Create a toolchain for this Cloud Foundry app:
-      In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
+4. Switch back to your new app in the Bluemix Dashboard. Open the new app's dashboard and navigate to the **Overview** section.  Click **Connect new** under **Connections**. From the service catalog select the Watson Text-To-Speech Service, create and connect it to the app LibraryUI. You can hold off restaging the application until all services are bound.
 
-      ![](./images/createtoolchain.png)
+5. Now create and bind a second service instance, a *Watson Conversation Service* to the app. 
 
-      Choose **repository type: new** to create a new git repository for your app.
-
-      ![](./images/gitrepo.png)
-
-      Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
-
-      ![](./images/toolchaingit.png)
-
-6. Create a Watson Text-To-Speech Service and connect it to the app LibraryUI.
-
-7. Create a Watson Conversation Service and bind it to the app. Launch, and import a workspace using the file **conversation-workspace-user-adjusted.json**. Connect it to the app.
-
-    * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. You will be directed to a view of the service.
-    * To bind this service instance to the node.js application, open the **Connections** panel, and click **Create Connection**. Then select the LibraryUI applicaton and click **Connect**. You can hold off restaging the application until the end of step 8.
-    * Open the **Manage** panel and click **Launch tool**.
+    * In the app dashboard's **Overview** section click **Connect new** under **Connections** again.
+    * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. You can hold off restaging the application until the end of step 8.
+    * Click on the new *Conversation* service instance to open its main page. Open the **Manage** panel and click **Launch tool**.
 
         ![Launch](./images/launch-conv.png)
 
@@ -121,14 +97,28 @@ The text "... Library Backend Server is running ..." should be displayed in your
         //authenticate conversation service
         var workspace_id_copy = 'YOUR_WORKSPACE_ID';
         ```
-8. Create an instance of the App ID Service on Bluemix:
+6. Create and bind an instance of the App ID Service on Bluemix:
 
     * Select the App ID Service from the Catalog.
     * Name your service instance and click **Create**.
     * You can keep the default configurations under *Identity Providers*, *Login Customization* and *Profiles*. Or you can adjust them as you choose, for example by uploading the image **views/images/bookshelf.jpg** in the login cumstomization.
     * Connect it to the app LibraryUI and restage the application when prompted.
 
-9. Push the application code to your git repository. *<your-url>* should be replaced by the url of the GitLab repository.
+7. Create a toolchain for this Cloud Foundry app:
+
+      * In the **Overview** section of the app, click **Enable** under **Continuous Delivery**.
+
+      ![](./images/createtoolchain.png)
+
+      * Choose **repository type: new** to create a new git repository for your app.
+
+      ![](./images/gitrepo.png)
+
+      * Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
+
+      ![](./images/toolchaingit.png)
+
+8. Push the application code to your git repository. *\<your-url\>* should be replaced by the url of the GitLab repository.
 
     ```
     git remote set-url origin <your-url>
@@ -154,3 +144,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
       ![ssh-keys](./images/gitlab-ssh.png)
 
     Paste your key in the 'Key' section and give it a relevant 'Title'.
+    
+9. Open the toolchain service from the App's dashboard, navigate via the toolchain to the *Continuous Delivery* service as part of the toolchain. Open the *Continuous Delivery* tool and watch the automatic build and deploy operations until the app is successfully deployed.
+
+10. Open the running app's URL either from the *Continuous Delivery* tool or the App dashboard in the Bluemix console.
