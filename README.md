@@ -5,36 +5,40 @@ This is the second part of the Library Application: [https://github.com/florae12
 This part consists of a Node.js server and the web UI.
 It is built using HTML, CSS, Bootstrap, jQuery, and a Watson Text-To-Speech Service, a Watson Conversation Service as well as the App ID Service on Bluemix.
 
-This first part is a backend server running on Java Liberty on Bluemix that connects to a Cloudant NoSQL Database.
-
   ![Architecture](./images/architecture-node.png)
 
 ## Prerequisites
+### Local tools
+To create an app for the cloud, in this lab you will use an open toolchain in the cloud, provided by the Bluemix Continuous Delivery service. Therefore, you will only need a minimum of software locally for the subsequent steps:
+    * An up-to-date web browser, e.g. Firefox, Chrome, Safari, …
+    * Any text editor (like Eclipse, Atom, Brackets, vim … or whatever you prefer)
+    * Git client ([Download here](https://git-scm.com/downloads))
 
-  The software needed for the following steps:
-  * Cloud Foundry Command Line Interface ([Download here](https://github.com/cloudfoundry/cli/releases)),
-  * Git tool ([Download here](https://git-scm.com/downloads))
+  Another requirement is an [IBM Bluemix Account](https://console.bluemix.net/registration).
 
-  Another requirement is an IBM Bluemix Account.
+### Library server (Java Backend)
+For the sake of time, you will not create the Library service on your own during this lab, but instead use an instance provided to you. 
 
-### Install the Cloud Foundry CLI
+If you are interested in how to create the Library service and want to do that yourself – AFTER this workshop – refer to the git repo [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted).
 
-  If the Cloud Foundry Command Line Interface is not yet installed on your machine, use the following commands to install it (for Ubuntu based Linux distributions):
+Note, that all workshop participants will share the same Library service instance. During the test, you might experience data changes introduced by other participants. The “library” is open to all registered users. 
 
-  ```
-  # ...first add the Cloud Foundry Foundation public key and package repository to your system
-  wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-  echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-  # ...then, update your local package index, then finally install the cf CLI
-  sudo apt-get update
-  sudo apt-get install cf-cli
-  ```
+#### Test the availability of the library service
+•	The common Library service instance is available at the URL 
+https://library-server-demo-1.mybluemix.net/
+
+Open this URL in your browser. 
+The text "... Library Backend Server is running ..." should be displayed in your browser.
+
+•	To check the connection to the Cloudant Database, add /api/books to the URL 
+(https://library-server-demo-1.mybluemix.net/api/books ). You should see the books that were added to your books database as a json array.
+
 
 ## Deploy to Bluemix
 
-1. * Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
+1. * Connect to an existing app instead of deploying the Java back end yourself. To make sure the app is running, try this link: [https://library-server-demo-1.mybluemix.net/](https://library-server-demo-1.mybluemix.net/)
 
-   * **Optional:** Connect to an existing app instead of deploying the Java back end yourself. To make sure the app is running, try this link: [https://library-server-demo-1.mybluemix.net/](https://library-server-demo-1.mybluemix.net/)
+   * **Optional:** Deploy the Java back end to Bluemix [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted) and bind it to a Cloudant NoSQL Database.
 
 2. Clone the app to your local environment from your terminal using the following command
 
@@ -42,15 +46,12 @@ This first part is a backend server running on Java Liberty on Bluemix that conn
     git clone https://github.com/florae123/libraryui-user-adjusted
     ```
 
-3. * If you deployed your own back end app, you can find the URL of your java library server under **All Apps** on the Bluemix dashboard for the region you used.
+	Change to the resulting directory
+	```
+  	cd libraryui-v2
+	```
 
-     ![dashboard-click](./images/dashboard.png)
-
-     Copy the URL.
-
-     ![url](./images/java-url.png)
-
-     Open the file **manifest.yml** and change the **"LIBRARY_URI"** to the URL of your java library server and add **"/api"** at the end: **https://[YOUR_LIBRARY_SERVER_URL]/api**
+3. Open the file **manifest.yml** and change the **"LIBRARY_URI"** to the URL of your java library server and add **"/api"** at the end: **https://[YOUR_LIBRARY_SERVER_URL]/api**
 
     * **Optional:** If you want to use an existing back end server, copy the URL "https://library-server-demo-1.mybluemix.net/api" to the file **manifest.yml**. It should look like this:
 
