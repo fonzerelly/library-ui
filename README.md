@@ -40,7 +40,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
 1. Clone the app to your local environment from your terminal using the following command
 
     ```
-    git clone https://github.com/florae123/libraryui-user-adjusted
+    git clone https://github.com/florae123/Libraryui-v2
     ```
 
 	Change to the resulting directory
@@ -61,27 +61,29 @@ The text "... Library Backend Server is running ..." should be displayed in your
     - name: LibraryUI
       host: libraryui-heinmueck
       env:
-        LIBRARY_URI: "https://library-server-tsuedbro.mybluemix.net/api"
+        LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
       memory: 64M
       instances: 1
     ```
 
-3.  Create a Node.JS Cloud Foundry App on Bluemix.
+3.  Login to bluemix.net and create a Node.JS Cloud Foundry App.
       Give it the same name (**LibraryUI**) and host name as defined in the **manifest.yml** file.
 
       ![](./images/nodejsapp.png)
 
-4. Switch back to your new app in the Bluemix Dashboard. Open the new app's dashboard and navigate to the **Overview** section.  Click **Connect new** under **Connections**. From the service catalog select the Watson Text-To-Speech Service, create and connect it to the app LibraryUI. You can hold off restaging the application until all services are bound.
+4. Create and bind an instance of the *Watson Text-to-Speech* service.
+	* In the app dashboard, navigate to the **Overview** section.  Click **Connect new** under **Connections**. 
+	* From the service catalog select the Watson Text-To-Speech Service. Leave all fields unchanged and click **Create**. You can hold off restaging the application until all services are bound.
 
-5. Now create and bind a second service instance, a *Watson Conversation Service* to the app. 
+5. Now create and bind a second service instance, a *Watson Conversation* service to the app. 
 
-    * In the app dashboard's **Overview** section click **Connect new** under **Connections** again.
-    * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. You can hold off restaging the application until the end of step 8.
-    * Click on the new *Conversation* service instance to open its main page. Open the **Manage** panel and click **Launch tool**.
+    * Click **Connect new** under **Connections** again.
+    * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. Again, you can hold off restaging the application until you finished the next step.
+    * Click on the new *Conversation* service instance to open its main page. Open the **Manage** panel and click **Launch tool**. 
 
         ![Launch](./images/launch-conv.png)
 
-    * Under **Create workspace**, click **Import**.
+    * Switch to the new tab or window, where the Conversation Management Tool has opened. Beside **Create workspace**, click the  **Import** icon.
     * Choose the file **conversation-workspace-user-adjusted.json** from your local copy of the LibraryUI directory, select **Everything (Intents, Entities, and Dialog)**, and click **Import**.
 
         ![import](./images/import-workspace-2.png)
@@ -97,10 +99,11 @@ The text "... Library Backend Server is running ..." should be displayed in your
         //authenticate conversation service
         var workspace_id_copy = 'YOUR_WORKSPACE_ID';
         ```
-6. Create and bind an instance of the App ID Service on Bluemix:
+6. Create and bind an instance of the *App ID* Service on Bluemix:
 
-    * Select the App ID Service from the Catalog.
-    * Name your service instance and click **Create**.
+    * Return back to the LibraryUI app's dashboard and click **Connect new** under **Connections** one more time.
+    * Select the *App ID* Service from the Catalog.
+    * Name your service instance (or leave unchanged) and click **Create**.
     * You can keep the default configurations under *Identity Providers*, *Login Customization* and *Profiles*. Or you can adjust them as you choose, for example by uploading the image **views/images/bookshelf.jpg** in the login cumstomization.
     * Connect it to the app LibraryUI and restage the application when prompted.
 
@@ -110,23 +113,35 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
       ![](./images/createtoolchain.png)
 
-      * Choose **repository type: new** to create a new git repository for your app.
+      * For the *Git Repos and Issue Tracking* tool, choose **repository type: new** to create a new git repository for your app.
 
       ![](./images/gitrepo.png)
+      
+      Then click **Create** to create the new toolchain.
 
-      * Click on the **Git** icon in your toolchain. You will be redirected to the GitLab repository.
+      * In the toolchain, hold the **Ctrl** (or **Strg**) key and click  on the **Git** icon in your toolchain. The associated  GitLab repository is opened in a new browser tab. So you can watch it there. Copy its URL from the browser.
 
       ![](./images/toolchaingit.png)
 
-8. Push the application code to your git repository. *\<your-url\>* should be replaced by the url of the GitLab repository.
+8. Using the Git client in a command window on your computer, push the application code to your git repository:
+
+	- *\<your-url\>* should be replaced by the url of the GitLab repository
+	- *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
+	- *Your name* should be replaced with your name as it should appear in Gitlab 
 
     ```
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
     git remote set-url origin <your-url>
-    git add *
+    git add .
     git commit -m “first commit”
     git push origin master
     ```
-    You may need to add an **SSH key** to your GitLab account.
+
+    For a push via https  protocol you may need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
+
+    
+    For a push via SSH you may need to add an **SSH key** to your GitLab account.
     To locate an existing SSH key pair:
     ```
     cat ~/.ssh/id_rsa.pub
@@ -145,6 +160,13 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
     Paste your key in the 'Key' section and give it a relevant 'Title'.
     
-9. Open the toolchain service from the App's dashboard, navigate via the toolchain to the *Continuous Delivery* service as part of the toolchain. Open the *Continuous Delivery* tool and watch the automatic build and deploy operations until the app is successfully deployed.
+9. Go back to the Toolchain tab and open the *Continuous Delivery* tool. Trigger the **Build Stage** manually for this first time. 
+	* Click on the *Run Stage* icon in the **Build Stage**
+	
+	![buildmanually](./images/BuildStage.png)
+	
+	* Watch the automatic build and deploy operations until the app is successfully deployed.
+
+	**Note:** with the current configuration, the build and deploy stages will afterwards run automatically, whenever a change is pushed to the GitLab repository. If you have some time left, you may try this by introducing a simple code change and repeating the git commands *add*, *commit*, and *push* (see above).
 
 10. Open the running app's URL either from the *Continuous Delivery* tool or the App dashboard in the Bluemix console.
