@@ -18,20 +18,20 @@ To create an app for the cloud, in this lab you will use an open toolchain in th
   Another requirement is an [IBM Bluemix Account](https://console.bluemix.net/registration).
 
 ### Library server (Java Backend)
-For the sake of time, you will not create the Library service on your own during this lab, but instead use an instance provided to you. 
+For the sake of time, you will not create the Library service on your own during this lab, but instead use an instance provided to you.
 
-If you are interested in how to create the Library service and want to do that yourself – AFTER this workshop – refer to the git repo [https://github.com/florae123/library-server-java-user-adjusted](https://github.com/florae123/library-server-java-user-adjusted).
+If you are interested in how to create the Library service and want to do that yourself – AFTER this workshop – refer to the git repo [https://github.com/florae123/library-server-java-v2](https://github.com/florae123/library-server-java-v2).
 
-Note, that all workshop participants will share the same Library service instance. During the test, you might experience data changes introduced by other participants. The “library” is open to all registered users. 
+Note, that all workshop participants will share the same Library service instance. During the test, you might experience data changes introduced by other participants. The “library” is open to all registered users.
 
 #### Test the availability of the library service
-•	The common Library service instance is available at the URL 
+•	The common Library service instance is available at the URL
 https://library-server-demo-1.mybluemix.net/
 
-Open this URL in your browser. 
+Open this URL in your browser.
 The text "... Library Backend Server is running ..." should be displayed in your browser.
 
-•	To check the connection to the Cloudant Database, add /api/books to the URL 
+•	To check the connection to the Cloudant Database, add /api/books to the URL
 (https://library-server-demo-1.mybluemix.net/api/books ). You should see the books that were added to your books database as a json array.
 
 
@@ -72,19 +72,19 @@ The text "... Library Backend Server is running ..." should be displayed in your
       ![](./images/nodejsapp.png)
 
 4. Create and bind an instance of the *Watson Text-to-Speech* service.
-	* In the app dashboard, navigate to the **Overview** section.  Click **Connect new** under **Connections**. 
+	* In the app dashboard, navigate to the **Overview** section.  Click **Connect new** under **Connections**.
 	* From the service catalog select the Watson Text-To-Speech Service. Leave all fields unchanged and click **Create**. You can hold off restaging the application until all services are bound.
 
-5. Now create and bind a second service instance, a *Watson Conversation* service to the app. 
+5. Now create and bind a second service instance, a *Watson Conversation* service to the app.
 
     * Click **Connect new** under **Connections** again.
     * Select **Conversation** from the Bluemix Catalog in your Browser, make sure the *Free* pricing plan is selected and click **Create**. Again, you can hold off restaging the application until you finished the next step.
-    * Click on the new *Conversation* service instance to open its main page. Open the **Manage** panel and click **Launch tool**. 
+    * Click on the new *Conversation* service instance to open its main page. Open the **Manage** panel and click **Launch tool**.
 
         ![Launch](./images/launch-conv.png)
 
     * Switch to the new tab or window, where the Conversation Management Tool has opened. Beside **Create workspace**, click the  **Import** icon.
-    * Choose the file **conversation-workspace-user-adjusted.json** from your local copy of the LibraryUI directory, select **Everything (Intents, Entities, and Dialog)**, and click **Import**.
+    * Choose the file **conversation-workspace-v2.json** from your local copy of the LibraryUI directory, select **Everything (Intents, Entities, and Dialog)**, and click **Import**.
 
         ![import](./images/import-workspace-2.png)
 
@@ -116,7 +116,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
       * For the *Git Repos and Issue Tracking* tool, choose **repository type: new** to create a new git repository for your app.
 
       ![](./images/gitrepo.png)
-      
+
       Then click **Create** to create the new toolchain.
 
       * In the toolchain, hold the **Ctrl** (or **Strg**) key and click  on the **Git** icon in your toolchain. The associated  GitLab repository is opened in a new browser tab. So you can watch it there. Copy its URL from the browser.
@@ -127,7 +127,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
 	- *\<your-url\>* should be replaced by the url of the GitLab repository
 	- *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
-	- *Your name* should be replaced with your name as it should appear in Gitlab 
+	- *Your name* should be replaced with your name as it should appear in Gitlab
 
     ```
     git config --global user.email "you@example.com"
@@ -140,7 +140,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
     For a push via https  protocol you may need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
 
-    
+
     For a push via SSH you may need to add an **SSH key** to your GitLab account.
     To locate an existing SSH key pair:
     ```
@@ -155,16 +155,16 @@ The text "... Library Backend Server is running ..." should be displayed in your
     Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
 
       ![settings](./images/gitlab-settings.png)
-      
+
       ![ssh-keys](./images/gitlab-ssh.png)
 
     Paste your key in the 'Key' section and give it a relevant 'Title'.
-    
-9. Go back to the Toolchain tab and open the *Continuous Delivery* tool. Trigger the **Build Stage** manually for this first time. 
+
+9. Go back to the Toolchain tab and open the *Continuous Delivery* tool. Trigger the **Build Stage** manually for this first time.
 	* Click on the *Run Stage* icon in the **Build Stage**
-	
+
 	![buildmanually](./images/BuildStage.png)
-	
+
 	* Watch the automatic build and deploy operations until the app is successfully deployed.
 
 	**Note:** with the current configuration, the build and deploy stages will afterwards run automatically, whenever a change is pushed to the GitLab repository. If you have some time left, you may try this by introducing a simple code change and repeating the git commands *add*, *commit*, and *push* (see above).
