@@ -62,7 +62,7 @@ The text "... Library Backend Server is running ..." should be displayed in your
       host: libraryui-heinmueck
       env:
         LIBRARY_URI: "https://library-server-demo-1.mybluemix.net/api"
-      memory: 64M
+      memory: 256M
       instances: 1
     ```
 
