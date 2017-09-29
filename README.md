@@ -127,7 +127,6 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
       1. Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
 	    2. Configure and commit the git repository.
-
           ```
             git config --global user.email "you@example.com"
             git config --global user.name "Your Name"
@@ -135,7 +134,6 @@ The text "... Library Backend Server is running ..." should be displayed in your
             git add .
             git commit -m “first commit”
           ```
-
           * *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
           ![gitlab-https](./images/gitlab-https.png)
     	    * *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
@@ -152,9 +150,9 @@ The text "... Library Backend Server is running ..." should be displayed in your
       4. Push the code to GitLab.
 
           ```
-            git push origin master
+          git push origin master
           ```
-        You will be asked for Username and Password. You the name of your token as Username and the token itself as Password.
+          You will be asked for Username and Password. You the name of your token as Username and the token itself as Password.
 
           ![gitlab-token-pw](./images/gitlab-token-pw.png)
 
