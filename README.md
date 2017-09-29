@@ -126,12 +126,13 @@ The text "... Library Backend Server is running ..." should be displayed in your
 8. Using the Git client in a command window on your computer, push the application code to your git repository:
 
       1. Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
-	    2.  ```
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git remote set-url origin <your-url>
-          git add .
-          git commit -m “first commit”
+	    2.  
+          ```
+            git config --global user.email "you@example.com"
+            git config --global user.name "Your Name"
+            git remote set-url origin <your-url>
+            git add .
+            git commit -m “first commit”
           ```
 
           * *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
@@ -147,9 +148,10 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
           Copy and save the token, and remember the name you picked.
 
-      4. ```
-        git push origin master
-        ```
+      4. 
+          ```
+            git push origin master
+          ```
         You will be asked for Username and Password. You the name of your token as Username and the token itself as Password.
 
           ![gitlab-token-pw](./images/gitlab-token-pw.png)
