@@ -125,9 +125,13 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
 8. Using the Git client in a command window on your computer, push the application code to your git repository:
 
-	- *\<your-url\>* should be replaced by the url of the GitLab repository
+  - Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
+	- *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
+      ![gitlab-https](./images/gitlab-https.png)
 	- *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
 	- *Your name* should be replaced with your name as it should appear in Gitlab
+      ![gitlab-name](./images/gitlab-name.png)
+
 
     ```
     git config --global user.email "you@example.com"
@@ -141,24 +145,26 @@ The text "... Library Backend Server is running ..." should be displayed in your
     For a push via https  protocol you may need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
 
 
-    For a push via SSH you may need to add an **SSH key** to your GitLab account.
-    To locate an existing SSH key pair:
-    ```
-    cat ~/.ssh/id_rsa.pub
-    ```
-    To generate a new SSH key pair:
-    ```
-    ssh-keygen -t rsa -C "your.email@example.com" -b 4096
-    cat ~/.ssh/id_rsa.pub
-    ```
-    Copy the entire key starting with ssh-rsa.
-    Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
 
-      ![settings](./images/gitlab-settings.png)
 
-      ![ssh-keys](./images/gitlab-ssh.png)
+    - **(OPTIONAL)** For a push via SSH you may need to add an **SSH key** to your GitLab account.
+        To locate an existing SSH key pair:
+        ```
+        cat ~/.ssh/id_rsa.pub
+        ```
+        To generate a new SSH key pair:
+        ```
+        ssh-keygen -t rsa -C "your.email@example.com" -b 4096
+        cat ~/.ssh/id_rsa.pub
+        ```
+        Copy the entire key starting with ssh-rsa.
+        Then add your public SSH key to GitLab. Navigate to the 'SSH Keys' tab in your 'Profile Settings'.
 
-    Paste your key in the 'Key' section and give it a relevant 'Title'.
+          ![settings](./images/gitlab-settings.png)
+
+          ![ssh-keys](./images/gitlab-ssh.png)
+
+        Paste your key in the 'Key' section and give it a relevant 'Title'.
 
 9. Go back to the Toolchain tab and open the *Continuous Delivery* tool. Trigger the **Build Stage** manually for this first time.
 	* Click on the *Run Stage* icon in the **Build Stage**
