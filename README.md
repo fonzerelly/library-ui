@@ -126,24 +126,33 @@ The text "... Library Backend Server is running ..." should be displayed in your
 8. Using the Git client in a command window on your computer, push the application code to your git repository:
 
       1. Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
-	    2. *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
-      ![gitlab-https](./images/gitlab-https.png)
-	    * *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
-	    * *Your name* should be replaced with your name as it should appear in Gitlab
+	    2.  ```
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git remote set-url origin <your-url>
+          git add .
+          git commit -m “first commit”
+          ```
 
-      ![gitlab-name](./images/gitlab-name.png)
+          * *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
+          ![gitlab-https](./images/gitlab-https.png)
+    	    * *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
+    	    * *Your name* should be replaced with your name as it should appear in Gitlab
 
+          ![gitlab-name](./images/gitlab-name.png)
 
-    ```
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    git remote set-url origin <your-url>
-    git add .
-    git commit -m “first commit”
-    git push origin master
-    ```
+      3. For a push via https  protocol you need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
 
-    For a push via https  protocol you may need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
+          ![gitlab-token](./images/gitlab-token.png)
+
+          Copy and save the token, and remember the name you picked.
+
+      4. ```
+        git push origin master
+        ```
+        You will be asked for Username and Password. You the name of your token as Username and the token itself as Password.
+
+          ![gitlab-token-pw](./images/gitlab-token-pw.png)
 
 
 
