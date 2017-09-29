@@ -135,12 +135,13 @@ The text "... Library Backend Server is running ..." should be displayed in your
               git commit -m “first commit”
             ```
               1. *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
-              ![gitlab-https](./images/gitlab-https.png)
+
+                  ![gitlab-https](./images/gitlab-https.png)
 
         	    2. *you@example.com* should be replaced with your email address (the one you used to register for Bluemix).
         	    3. *Your name* should be replaced with your name as it should appear in Gitlab.
 
-              ![gitlab-name](./images/gitlab-name.png)
+                  ![gitlab-name](./images/gitlab-name.png)
 
       3. For a push via https  protocol you need to generate a personal access token with 'api' scope for Git over HTTP. You can generate one at https://git.ng.bluemix.net/profile/personal_access_tokens
 
