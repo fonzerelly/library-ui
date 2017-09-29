@@ -125,11 +125,12 @@ The text "... Library Backend Server is running ..." should be displayed in your
 
 8. Using the Git client in a command window on your computer, push the application code to your git repository:
 
-  - Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
-	- *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
+      a. Confirm your access to IBM GitLab, by pressing the button inside the IBM GitLab confirmation mail
+	    b. *\<your-url\>* should be replaced by the url of the GitLab repository: Choose the HTTPS protocol and copy the URL.
       ![gitlab-https](./images/gitlab-https.png)
-	- *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
-	- *Your name* should be replaced with your name as it should appear in Gitlab
+	    * *you@example.com* should be replaced with your email address (the one you used to register for Bluemix)
+	    * *Your name* should be replaced with your name as it should appear in Gitlab
+
       ![gitlab-name](./images/gitlab-name.png)
 
 
