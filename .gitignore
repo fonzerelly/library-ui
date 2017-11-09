@@ -1,3 +1,6 @@
 node_modules/
 .env.json
 *.log
+*.*~
+*.swp
+*.swo

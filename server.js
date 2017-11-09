@@ -123,7 +123,7 @@ app.get('/apiuri', function(req, res) {
 });
 
 //authenticate conversation service
-var workspace_id_copy = '4e3c0199-9871-4346-8b30-c2bfba973f8c';
+var workspace_id_copy = '79d7a75e-4b63-4b54-a37d-5d02a0e95e94';
 var conversation = watson.conversation({
   username: vcapServices.conversation[0].credentials.username,
   password: vcapServices.conversation[0].credentials.password,
